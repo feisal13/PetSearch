@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal">PetSearch</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{% url 'home' %}">Главная</a>
+        <a class="p-2 text-dark" href="{% url 'lost' %}">Пропавшие</a>
+        <a class="p-2 text-dark" href="{% url 'detected' %}">Найденные</a>
+        <a class="p-2 text-dark" href="{% url 'about_us' %}">О сайте</a>
+      </nav>
+       {% if user.is_authenticated %}
+        <a class="btn btn-outline-primary" href="{% url 'logout' %}">Выйти</a>
+           <span style="padding: 0px 5px;">&nbsp;</span>
+        <p1>{{ user.username }}  </p1>
+      {% else %}
+        <a class="btn btn-outline-primary" href="{% url 'login' %}">Войти</a>
+      {% endif %}
+</div>
+    <div class="container">
+
+    {% block content %}
+    {% block name_page %}{% endblock name_page %}
+    {% endblock %}
+    </div>
+
+</body>
+</html>

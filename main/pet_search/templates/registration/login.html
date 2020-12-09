@@ -1,0 +1,22 @@
+{% extends 'pet_search/base.html' %}
+{% block title %}Авторизация{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% block name_page %}
+<h1 class="my-4">Авторизация на сайте</h1>
+{% endblock name_page %}
+<form method="POST" action="{% url 'login' %}">
+	{% csrf_token %}
+    {{form|crispy}}
+    <input name='logins' type='submit' value="Войти" class="btn btn-primary"></input>
+    <a href="{% url 'register' %}" class="btn btn-secondary my-2">Регистрация</a>
+    <br>
+    <label>Если у вас нет аккаунта, нажмите на кнопку "Регистрация"</label>
+    <br>
+
+</form>
+<hr>
+
+<br>
+
+{% endblock content %}

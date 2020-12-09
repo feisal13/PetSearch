@@ -1,0 +1,19 @@
+{% extends 'pet_search/base.html' %}
+{% block title %}Регистрация{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% block name_page %}
+<h1 class="my-4">Регистрация</h1>
+{% endblock name_page %}
+<hr>
+<form method="POST" action="{% url 'register' %}">
+	{% csrf_token %}
+
+    {{form|crispy}}
+    <input name='register' type='submit' value="Зарегестрироватся" class="btn btn-primary"></input>
+</form>
+<hr>
+
+<br>
+
+{% endblock content %}
